@@ -1,3 +1,4 @@
-import { fetchWeather } from "./components/api";
 import "./css/layout.css";
-fetchWeather("India");
+
+// Sets up evenlistener which further manages modules
+import "./components/controller.ts";

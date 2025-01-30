@@ -11,6 +11,7 @@ module.exports = merge(common, {
         name: "google-chrome-stable",
       },
     },
-    watchFiles: ["./src/template.html"],
+    static: "./dist/",
+    watchFiles: "./src/**/template.html",
   },
 });

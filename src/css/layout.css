@@ -1,1 +1,91 @@
 @import "./reboot.css";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: 10% 85% 1fr;
+
+  header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & label {
+      margin-left: 1rem;
+      flex-basis: 8vw;
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      height: 2rem;
+      border-radius: 12px;
+      background-color: grey;
+
+      input[type="checkbox"] {
+        width: 0;
+        height: 0;
+        opacity: 0;
+
+        &:checked + span + span {
+          background-color: red;
+          border-radius: 20px;
+          transition: 0.8s;
+        }
+      }
+
+      span {
+        flex-basis: 50%;
+        user-select: none;
+        height: inherit;
+        text-align: center;
+      }
+
+      input:not(:checked) + span {
+        background-color: red;
+        border-radius: 12px;
+        transition: 0.8s;
+      }
+    }
+
+    & h1 {
+      margin-left: 10vw;
+      text-align: center;
+    }
+
+    #input_div {
+      margin-right: 1rem;
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+      & * {
+        height: 2rem;
+      }
+      button {
+        margin-left: 1rem;
+        width: 5rem;
+      }
+    }
+  }
+  main {
+    grid-area: main;
+    img {
+      width: 500px;
+      height: 500px;
+    }
+  }
+  footer {
+    grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      height: 30px;
+      width: 30px;
+    }
+  }
+}
