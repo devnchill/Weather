@@ -8,7 +8,7 @@ const searchBar: HTMLInputElement = document.getElementById(
 ) as HTMLInputElement;
 
 const searchButton: HTMLButtonElement = document.querySelector(
-  "search_bar+button",
+  "#search_bar+button",
 ) as HTMLButtonElement;
 
 async function setupModal(e: KeyboardEvent | MouseEvent) {
@@ -30,7 +30,5 @@ async function setupModal(e: KeyboardEvent | MouseEvent) {
   }
 }
 
-if (searchBar && searchButton) {
-  searchButton.addEventListener("click", setupModal);
-  searchBar.addEventListener("keyup", setupModal);
-}
+searchButton.addEventListener("click", setupModal);
+searchBar.addEventListener("keyup", setupModal);
