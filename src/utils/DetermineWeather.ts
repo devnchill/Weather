@@ -1,5 +1,3 @@
-import { celToFe, felToCe } from "./TempConverter";
-
 interface WeatherParams {
   temp: number;
   dew: number;
@@ -7,35 +5,26 @@ interface WeatherParams {
   humidity: number;
 }
 
-function determineWeatherCondition(
-  param: WeatherParams,
-  unit = "metric",
-): string {
-  let temp = param.temp;
-  if (unit !== "metric") {
-    temp = celToFe(param.temp);
-  }
-  const { dew, windspeed, humidity } = param;
-  const isHot: boolean = temp > 30;
-  const isCold: boolean = temp < 10;
-  const isHumid: boolean = humidity > 70;
-  const isDewClose: boolean = temp - dew < 3;
-  const isWindy: boolean = windspeed > 20;
+// here unit is either metric or us
+function determineWeatherCondition(param: WeatherParams, unit: string): string {
+  const { temp, dew, windspeed, humidity } = param;
+  const isMetric = unit === "metric";
+
+  const isHot = !isMetric ? temp > 86 : temp > 30;
+  const isCold = !isMetric ? temp < 50 : temp < 10;
+  const isWindy = !isMetric ? windspeed > 20 : windspeed > 32;
+  const isHumid = humidity > 70;
+  const isDewClose = temp - dew < 3;
 
   if (isHumid && isDewClose) {
-    console.log("rainy");
     return "rainy";
   } else if (isHot) {
-    console.log("summer");
     return "summer";
   } else if (isCold) {
-    console.log("winter");
     return "winter";
   } else if (isWindy) {
-    console.log("windy");
     return "windy";
   } else {
-    console.log("normal");
     return "normal";
   }
 }

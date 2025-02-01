@@ -1,29 +1,19 @@
 import { WeatherParams } from "../utils/DetermineWeather";
-import { celToFe, felToCe } from "../utils/TempConverter";
-function populateTable(
-  param: WeatherParams,
-  location: string,
-  isFarhenite: boolean,
-) {
-  const { dew, windspeed, humidity } = param;
-  let temp = param.temp;
-  if (isFarhenite) {
-    temp = celToFe(param.temp);
-  }
+
+function populateTable(param: WeatherParams, location: string, unit: string) {
+  const { temp, dew, windspeed, humidity } = param;
+  const tempUnit = unit === "us" ? "°F" : "°C";
+  const windUnit = unit === "us" ? "mph" : "km/h";
+  (document.getElementById("temp") as HTMLTableCellElement).textContent =
+    `${temp} ${tempUnit}`;
   (document.getElementById("location") as HTMLTableCellElement).textContent =
     location;
-  (document.getElementById("temp") as HTMLTableCellElement).textContent =
-    temp.toString();
   (document.getElementById("dew") as HTMLTableCellElement).textContent =
-    dew.toString();
+    `${dew} ${tempUnit}`;
   (document.getElementById("windspeed") as HTMLTableCellElement).textContent =
-    windspeed.toString();
+    `${windspeed} ${windUnit}`;
   (document.getElementById("humidity") as HTMLTableCellElement).textContent =
-    humidity.toString();
+    `${humidity} %`;
 }
 
-function updateTemp(temp: number) {
-  (document.getElementById("temp") as HTMLTableCellElement).textContent =
-    temp.toString();
-}
-export { populateTable, updateTemp };
+export { populateTable };

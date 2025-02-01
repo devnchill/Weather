@@ -17,9 +17,12 @@ interface WeatherData {
  * @throws {Error} If the API request fails or the response is not OK.
  */
 
-async function fetchWeather(location: string): Promise<WeatherData> {
+async function fetchWeather(
+  location: string,
+  unit: string,
+): Promise<WeatherData> {
   const API: string = "UHZLMQ56GWWLE6NGQXQA524PB";
-  const url: string = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/today/?key=${API}&unitGroups=uk&elements=dew,pressure,temp,windspeed,humidity`;
+  const url: string = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/today/?key=${API}&unitGroup=${unit}&elements=dew,pressure,temp,windspeed,humidity`;
   try {
     const response: Response = await fetch(url, { mode: "cors" });
     if (!response.ok) {
