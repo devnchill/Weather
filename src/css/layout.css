@@ -9,6 +9,8 @@ body {
   display: grid;
   grid-template-areas: "header" "main" "footer";
   grid-template-rows: 10% 85% 1fr;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   header {
     grid-area: header;
@@ -73,9 +75,13 @@ body {
   }
   main {
     grid-area: main;
-    img {
-      width: 500px;
-      height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    table {
+      font-size: 3rem;
+      font-weight: 800;
+      border-spacing: 1rem;
     }
   }
   footer {

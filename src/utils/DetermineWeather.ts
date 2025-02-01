@@ -1,3 +1,5 @@
+import { celToFe, felToCe } from "./TempConverter";
+
 interface WeatherParams {
   temp: number;
   dew: number;
@@ -5,8 +7,15 @@ interface WeatherParams {
   humidity: number;
 }
 
-function determineWeatherCondition(param: WeatherParams): string {
-  const { temp, dew, windspeed, humidity } = param;
+function determineWeatherCondition(
+  param: WeatherParams,
+  unit = "metric",
+): string {
+  let temp = param.temp;
+  if (unit !== "metric") {
+    temp = celToFe(param.temp);
+  }
+  const { dew, windspeed, humidity } = param;
   const isHot: boolean = temp > 30;
   const isCold: boolean = temp < 10;
   const isHumid: boolean = humidity > 70;
@@ -31,4 +40,4 @@ function determineWeatherCondition(param: WeatherParams): string {
   }
 }
 
-export { determineWeatherCondition };
+export { WeatherParams, determineWeatherCondition };

@@ -3,15 +3,15 @@
  */
 
 function celToFe(param: number): number {
-  return param * (9 / 5) + 32;
+  return Math.trunc(param * (9 / 5) + 32);
 }
 
 /*
- * @param {number} temperature in farhenite . Function will convert it to celsius and return it.
+ * @param {number} temperature in farhenite . Function will convert it to celsius and return Math.trunc( it.);
  */
 
-function felToCe(param: number): number {
-  return (param - 32) * (5 / 9);
+function feToCe(param: number): number {
+  return Math.trunc((param - 32) * (5 / 9));
 }
 
-export { celToFe, felToCe };
+export { celToFe, feToCe as felToCe };

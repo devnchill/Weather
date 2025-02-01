@@ -9,8 +9,8 @@
     <header>
       <label for="checkbox">
         <input id="checkbox" type="checkbox" name="checkbox" />
-        <span>C</span>
         <span>F</span>
+        <span>C</span>
       </label>
       <h1>Weather App</h1>
       <div id="input_div">
@@ -19,9 +19,26 @@
       </div>
     </header>
     <main>
-      <div id="weather_info_card">
-        <img src="#" alt="gifPlaceholder" />
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>Temp</th>
+            <th>Dew</th>
+            <th>WindSpeed</th>
+            <th>Humidity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="location"></td>
+            <td id="temp"></td>
+            <td id="dew"></td>
+            <td id="windspeed"></td>
+            <td id="humidity"></td>
+          </tr>
+        </tbody>
+      </table>
     </main>
     <footer>
       <a target="blank" href="https://github.com/devnchill">

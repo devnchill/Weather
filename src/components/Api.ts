@@ -19,7 +19,7 @@ interface WeatherData {
 
 async function fetchWeather(location: string): Promise<WeatherData> {
   const API: string = "UHZLMQ56GWWLE6NGQXQA524PB";
-  const url: string = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/today/?key=${API}&elements=dew,pressure,temp,windspeed,humidity`;
+  const url: string = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/today/?key=${API}&unitGroups=uk&elements=dew,pressure,temp,windspeed,humidity`;
   try {
     const response: Response = await fetch(url, { mode: "cors" });
     if (!response.ok) {
@@ -41,13 +41,8 @@ async function fetchWeather(location: string): Promise<WeatherData> {
  */
 
 async function showGif(weather: string): Promise<void> {
-  const IMG: HTMLImageElement = document.querySelector(
-    "#weather_info_card  img",
-  ) as HTMLImageElement;
-  if (!IMG) {
-    console.error("Image element not found!");
-    return;
-  }
+  const BODY: HTMLBodyElement = document.body as HTMLBodyElement;
+  console.log("BODY found", BODY);
 
   const API: string = "fA0vEse7wLBDwjfSMLqUeLbaTNhiK45t";
   const url: string = `https://api.giphy.com/v1/gifs/translate?api_key=${API}&s=${weather}`;
@@ -58,7 +53,7 @@ async function showGif(weather: string): Promise<void> {
     }
     const responseObj = await response.json();
     console.log(responseObj.data.images.original.url);
-    IMG.src = responseObj.data.images.original.url;
+    BODY.style.backgroundImage = `url(${responseObj.data.images.original.url})`;
     console.log("done setting up gif");
   } catch (error) {
     console.log(error);
