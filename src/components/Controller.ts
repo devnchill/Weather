@@ -19,6 +19,9 @@ if (toggleTemp.checked) {
   isFarhenite = true;
 }
 
+/*
+ * @param {event (keyboard|mouse)} triggers following function which manages everything from taking location , fetching weather info using location to displaying fig based on api info.
+ */
 async function setupModal(e: KeyboardEvent | MouseEvent) {
   let unit = "metric";
   if (

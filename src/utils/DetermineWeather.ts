@@ -10,6 +10,7 @@ function determineWeatherCondition(param: WeatherParams, unit: string): string {
   const { temp, dew, windspeed, humidity } = param;
   const isMetric = unit === "metric";
 
+  // determine factor based on unit
   const isHot = !isMetric ? temp > 86 : temp > 30;
   const isCold = !isMetric ? temp < 50 : temp < 10;
   const isWindy = !isMetric ? windspeed > 20 : windspeed > 32;
